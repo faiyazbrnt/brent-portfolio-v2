@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Mercer — Full-Stack, QA &amp; AI Automation Portfolio</title>
+    <meta
+      name="description"
+      content="Minimalist developer portfolio showcasing full-stack architecture, automated QA engineering, relational & NoSQL systems, and AI workflow automation."
+    />
+    <meta property="og:title" content="Alex Mercer — Full-Stack, QA & AI Automation Portfolio" />
+    <meta
+      property="og:description"
+      content="Minimalist developer portfolio showcasing full-stack architecture, automated QA engineering, relational & NoSQL systems, and AI workflow automation."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('portfolio-theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-[#FAFAFA] text-[#09090B] dark:bg-[#09090B] dark:text-[#FAFAFA] antialiased selection:bg-emerald-600/15 selection:text-emerald-900 dark:selection:bg-emerald-400/20 dark:selection:text-emerald-100">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
