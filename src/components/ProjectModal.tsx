@@ -111,7 +111,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             <div className="p-6 space-y-7">
               {/* Visual header */}
               <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 aspect-[16/9]">
-                {!imageError ? (
+                {project.image && !imageError ? (
                   <img
                     src={project.image}
                     alt={project.imageAlt}
@@ -182,24 +182,28 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 <div className="flex items-center gap-2.5 shrink-0">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 text-xs sm:text-sm font-medium text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors whitespace-nowrap shrink-0"
-                  >
-                    <Github className="w-4 h-4" aria-hidden="true" />
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-zinc-950 text-zinc-50 dark:bg-zinc-50 dark:text-zinc-950 text-xs sm:text-sm font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors whitespace-nowrap shrink-0"
-                  >
-                    <span>Live Demo</span>
-                    <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-                  </a>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 text-xs sm:text-sm font-medium text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors whitespace-nowrap shrink-0"
+                    >
+                      <Github className="w-4 h-4" aria-hidden="true" />
+                      <span>GitHub</span>
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-zinc-950 text-zinc-50 dark:bg-zinc-50 dark:text-zinc-950 text-xs sm:text-sm font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors whitespace-nowrap shrink-0"
+                    >
+                      <span>Live Demo</span>
+                      <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

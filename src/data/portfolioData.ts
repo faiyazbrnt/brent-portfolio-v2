@@ -73,19 +73,22 @@ export interface TechPillar {
 export interface ProjectItem {
   id: string;
   title: string;
+  subtitle: string;
   category: Exclude<ProjectCategory, 'All'>;
   year: string;
   clientOrScope: string;
   summary: string;
+  laymanBrief: string;
   outcomeMetric: string;
-  image: string;
+  image?: string;
   imageAlt: string;
+  placeholderModules?: string[];
   problemStatement: string;
   architectureAndDb: string;
   qaCoverage: string;
   techStack: string[];
-  liveUrl: string;
-  githubUrl: string;
+  liveUrl?: string;
+  githubUrl?: string;
 }
 
 export interface QAPyramidLayer {
@@ -289,99 +292,149 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
   'QA & Testing',
 ];
 
-// EDIT HERE: Replace these 4 structured case studies with your own real projects.
+// EDIT HERE: Real portfolio projects displayed in the peek carousel showcase.
 export const PROJECTS: ProjectItem[] = [
   {
-    id: 'pulseledger-saas',
-    title: 'PulseLedger — Multi-Tenant SaaS Billing & Analytics Platform',
+    id: 'bos-coffee-careers',
+    title: "Bo's Coffee Careers",
+    subtitle: 'Public Recruitment & Applicant Portal',
     category: 'Full-Stack',
     year: '2026',
-    clientOrScope: 'B2B SaaS Architecture',
+    clientOrScope: "Bo's Coffee Philippines",
     summary:
-      'End-to-end subscription, usage metering, and revenue reporting platform built for fast-growing software teams with strict tenant isolation.',
-    outcomeMetric: '99.98% billing accuracy · 180ms p95 dashboard load',
-    image: '/src/assets/images/project_saas_platform_1795763698879.jpg',
+      'Public hiring portal where job seekers explore open store and corporate roles nationwide and track their application status.',
+    laymanBrief:
+      "An online job portal for Bo's Coffee Philippines where applicants can browse open store and corporate roles across 100+ branches, submit applications online, and track where they are in the hiring process.",
+    outcomeMetric: 'Live on Vercel · 100+ nationwide store roles',
+    image: '/projects/bos-coffee-careers.png',
     imageAlt:
-      'PulseLedger SaaS billing and analytics dashboard rendered on a laptop',
+      "Bo's Coffee Careers web application landing page showing the brand overview and applicant sign-in gateway",
     problemStatement:
-      'Growing B2B teams struggled with mismatched Stripe webhook states, slow invoice reconciliation across seats, and regressions whenever pricing tiers changed.',
+      'Job applicants across nationwide branches needed one accessible place to discover openings, sign in, and follow hiring updates without manual email back-and-forth.',
     architectureAndDb:
-      'Built a Next.js App Router frontend backed by a modular NestJS API. PostgreSQL serves as the ACID-compliant source of truth with row-level tenant boundaries and idempotent ledger tables, while Redis caches aggregated MRR snapshots and coordinates retryable webhook queues.',
+      'Built with a responsive web frontend, Google and email authentication, dark mode support, and instant demo applicant access for fast evaluation.',
     qaCoverage:
-      'Protected by 140+ Jest unit specs on proration math, Postman/Newman webhook contract suites, and Playwright E2E flows verifying checkout, plan upgrades, and role permissions on every pull request.',
-    techStack: ['Next.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'Redis', 'Playwright'],
-    // EDIT HERE: Replace with live demo & GitHub repository URLs
-    liveUrl: 'https://example.com/pulseledger-demo',
-    githubUrl: 'https://github.com/example/pulseledger-saas',
+      'Verified across desktop and mobile viewports for auth flows, form validation, and dark/light theme parity.',
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Auth Gateway', 'Vercel'],
+    liveUrl: 'https://bo-s-coffee-careers.vercel.app/',
   },
   {
-    id: 'relayflow-ai-engine',
-    title: 'RelayFlow — Autonomous AI Workflow & Document Triage Engine',
+    id: 'bos-coffee-hr-system',
+    title: "Bo's Coffee HR System",
+    subtitle: 'Centralized HR Management & Analytics',
+    category: 'Full-Stack',
+    year: '2026',
+    clientOrScope: "Bo's Coffee Internal HR",
+    summary:
+      'Role-based human resources portal for managing branch teams, employee workflows, and workforce analytics.',
+    laymanBrief:
+      "A central workspace for Bo's Coffee HR teams to manage branch staff, track employee records, and view workforce analytics—with tailored access for each HR role.",
+    outcomeMetric: 'Live on Vercel · Role-based HR workspaces',
+    image: '/projects/bos-coffee-hr.png',
+    imageAlt:
+      "Bo's Coffee Centralized HR Management and Analytics portal login screen with Microsoft sign-in and demo role selector",
+    problemStatement:
+      'HR coordinators needed a unified portal to oversee multi-branch teams without juggling disconnected spreadsheets and manual status updates.',
+    architectureAndDb:
+      'Designed around role-scoped workspaces with Microsoft SSO support, interactive demo role switching, and centralized analytics views.',
+    qaCoverage:
+      'Tested role-based access boundaries, demo session switching, and responsive dashboard layouts.',
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'RBAC', 'Vercel'],
+    liveUrl: 'https://bo-s-coffee-hr-system.vercel.app/',
+  },
+  {
+    id: 'sales-reimbursement-system',
+    title: 'Sales Reimbursement System',
+    subtitle: 'Expense Submission & Approval Workflow',
+    category: 'Full-Stack',
+    year: '2026',
+    clientOrScope: 'Microgenesis Internal Ops',
+    summary:
+      'Structured reimbursement workspace where sales teams file expenses, route approvals, and monitor payout progress.',
+    laymanBrief:
+      'An internal expense portal that lets sales employees submit receipts and reimbursement requests, route them for manager approval, and track payout status in one place.',
+    outcomeMetric: 'Live on Vercel · End-to-end approval tracking',
+    image: '/projects/sales-reimbursement.png',
+    imageAlt:
+      'Sales Reimbursement System sign-in screen for Microgenesis employees featuring Microsoft work account login and demo access',
+    problemStatement:
+      'Sales representatives previously relied on scattered forms and emails to claim field expenses, slowing down finance reviews and reimbursements.',
+    architectureAndDb:
+      'Built with Microsoft work account sign-in, structured approval state transitions, and role-based demo preview access.',
+    qaCoverage:
+      'Validated submission workflows, approval state transitions, and access-control guards.',
+    techStack: ['React', 'TypeScript', 'Microsoft SSO', 'Approval Workflows', 'Vercel'],
+    liveUrl: 'https://sales-reimbursment-system.vercel.app/',
+  },
+  {
+    id: 'chronos-ledger',
+    title: 'ChronosLedger',
+    subtitle: 'Daily Time Record & Personal Budgeting',
+    category: 'Full-Stack',
+    year: '2026',
+    clientOrScope: 'Productivity & Finance App',
+    summary:
+      'Daily time record (DTR) and personal budget tracker with live analytics and automated lunch break snapshotting.',
+    laymanBrief:
+      'A personal daily time record (DTR) and budgeting app that tracks work hours, logs lunch breaks automatically, and gives live analytics on both time and spending.',
+    outcomeMetric: 'Live on Vercel · Automated DTR & live analytics',
+    image: '/projects/chronos-ledger.png',
+    imageAlt:
+      'ChronosLedger sign-in interface with clean email authentication and light/dark theme switcher',
+    problemStatement:
+      'Keeping daily work logs and personal expenses synchronized across separate tools made it hard to see real-time hours and budget balance.',
+    architectureAndDb:
+      'Combines authenticated user accounts, automated lunch-break snapshotting, and real-time time/budget summaries in a fast web app.',
+    qaCoverage:
+      'Covered authentication flows, time-calculation edge cases, and light/dark UI states.',
+    techStack: ['React', 'TypeScript', 'Analytics', 'DTR Engine', 'Vercel'],
+    liveUrl: 'https://chronos-ledger-brnt.vercel.app/',
+  },
+  {
+    id: 'chronos-time-payroll',
+    title: 'Chronos Time Management & Payroll',
+    subtitle: 'Enterprise Attendance & Payroll Platform',
+    category: 'Full-Stack',
+    year: '2025',
+    clientOrScope: 'Internal Enterprise System',
+    summary:
+      'Company-wide attendance tracking and payroll computation platform integrated with Microsoft authentication.',
+    laymanBrief:
+      'An enterprise timekeeping and payroll system secured with Microsoft sign-in. It tracks employee attendance, calculates work hours and overtime, and streamlines payroll processing for the whole organization.',
+    outcomeMetric: 'Internal deployment · Microsoft SSO & Payroll',
+    image: '/projects/chronos-time-payroll.png',
+    imageAlt:
+      'Chronos Time Tracking System welcome screen with deep navy-blue gradient background and Sign in with Microsoft button',
+    problemStatement:
+      'Manual timesheet consolidation and payroll computation created recurring delays and reconciliation errors every cutoff period.',
+    architectureAndDb:
+      'Built on relational payroll and attendance tables with Microsoft OAuth sign-in, cutoff calculations, and auditable time logs.',
+    qaCoverage:
+      'Verified overtime rules, cutoff boundary math, and Microsoft SSO session handling.',
+    techStack: ['Full-Stack', 'Microsoft SSO', 'SQL', 'Timekeeping', 'Payroll'],
+  },
+  {
+    id: 'oneops-system',
+    title: 'OneOps System',
+    subtitle: 'TASS · CRM · BRF · RFQ Unified Suite',
     category: 'AI Automation',
-    year: '2026',
-    clientOrScope: 'Client Automation System',
-    summary:
-      'RAG-powered ingestion and agent routing pipeline that classifies inbound client briefs, extracts structured fields, and syncs directly to CRM and Slack.',
-    outcomeMetric: '38 hrs/wk manual triage saved · 96.4% precision',
-    image: '/src/assets/images/project_ai_automation_1795763697998.jpg',
-    imageAlt:
-      'RelayFlow node-based AI automation workflow pipeline displayed on a studio monitor',
-    problemStatement:
-      'Operations teams spent hours manually reading PDFs, emails, and support forms to populate CRM records, leading to slow response times and inconsistent data entry.',
-    architectureAndDb:
-      'Engineered an async Python + FastAPI orchestration service combining LangChain structured-output chains with n8n webhook triggers. MongoDB stores flexible document traces, versioned prompt runs, and human-in-the-loop audit logs without rigid schema migrations.',
-    qaCoverage:
-      'Includes an automated LLM golden-dataset evaluation suite checking JSON schema validity, hallucination thresholds, and latency budgets before any prompt or model update deploys.',
-    techStack: ['Python', 'FastAPI', 'LangChain', 'n8n', 'MongoDB', 'LLM APIs'],
-    // EDIT HERE: Replace with live demo & GitHub repository URLs
-    liveUrl: 'https://example.com/relayflow-demo',
-    githubUrl: 'https://github.com/example/relayflow-ai-engine',
-  },
-  {
-    id: 'sentinel-qa-framework',
-    title: 'SentinelQA — Cross-Browser E2E & API Regression Framework',
-    category: 'QA & Testing',
     year: '2025',
-    clientOrScope: 'QA Engineering & CI/CD',
+    clientOrScope: 'Internal Operations Platform',
     summary:
-      'Reusable test automation architecture unifying Playwright browser suites, Cypress component checks, Jest logic specs, and Postman API contracts in GitHub Actions.',
-    outcomeMetric: '82% drop in escaped production bugs · 4.8 min sharded CI runs',
-    image: '/src/assets/images/project_qa_framework_1795763701446.jpg',
+      'Unified internal operations platform combining TASS, CRM, Business Request Forms (BRF), and Request for Quotation (RFQ) workflows.',
+    laymanBrief:
+      'An all-in-one internal operations suite bringing four business workflows together: TASS for service ticketing, CRM for customer management, BRF for business requests, and RFQ for vendor price quotes.',
+    outcomeMetric: 'Internal deployment · 4 integrated business modules',
     imageAlt:
-      'SentinelQA automated testing dashboard showing pass timelines and API assertions',
+      'OneOps System visual placeholder highlighting its four integrated modules: TASS System, CRM, BRF, and RFQ System',
+    placeholderModules: ['TASS System', 'CRM', 'BRF', 'RFQ System'],
     problemStatement:
-      'Weekly releases required 6+ hours of brittle manual smoke testing, yet subtle checkout and auth regressions still slipped into production after dependency updates.',
+      'Operations, sales, and procurement teams were switching between four separate tools to track tickets, clients, internal requests, and supplier quotes.',
     architectureAndDb:
-      'Designed a Page Object Model test harness with deterministic database seed fixtures, parallel CI sharding across 4 runners, automated trace/video uploads on failure, and strict JSON schema contract tests.',
+      'Architected as a modular multi-workflow platform unifying TASS, CRM, BRF, and RFQ data models under one shared internal workspace.',
     qaCoverage:
-      'Covers 100% of critical revenue journeys across Chromium, WebKit, and mobile viewports, plus automated smoke checks against staging immediately prior to production promotion.',
-    techStack: ['Playwright', 'Cypress', 'Jest', 'Postman', 'TypeScript', 'GitHub Actions'],
-    // EDIT HERE: Replace with live demo & GitHub repository URLs
-    liveUrl: 'https://example.com/sentinel-qa-report',
-    githubUrl: 'https://github.com/example/sentinel-qa-framework',
-  },
-  {
-    id: 'meridian-commerce-ops',
-    title: 'MeridianOps — High-Throughput E-Commerce & Fulfillment API',
-    category: 'Full-Stack',
-    year: '2025',
-    clientOrScope: 'Commerce Infrastructure',
-    summary:
-      'Inventory reservation, order routing, and automated supplier sync API engineered to absorb flash-sale traffic spikes without overselling stock.',
-    outcomeMetric: '2,400 req/sec peak sustained · Zero oversold inventory events',
-    image: '/src/assets/images/project_ecommerce_ops_1795763699162.jpg',
-    imageAlt:
-      'MeridianOps high-throughput commerce ledger and real-time API latency curve',
-    problemStatement:
-      'Flash-sale traffic overwhelmed legacy monolithic endpoints, causing inventory race conditions, stalled checkout webhooks, and manual warehouse reconciliation.',
-    architectureAndDb:
-      'Built a lean Node.js + Express API using MySQL row-level locking for inventory ledger integrity, Redis atomic counters for sub-10ms cart reservation locks, and Make scenarios to automate supplier notifications and exception alerts.',
-    qaCoverage:
-      'Verified with Jest concurrency simulations, Postman automated regression collections across 48 endpoints, and synthetic load profiles prior to peak retail events.',
-    techStack: ['Node.js', 'Express', 'MySQL', 'Redis', 'Make', 'Postman'],
-    // EDIT HERE: Replace with live demo & GitHub repository URLs
-    liveUrl: 'https://example.com/meridian-ops-demo',
-    githubUrl: 'https://github.com/example/meridian-commerce-ops',
+      'End-to-end validation across cross-module handoffs, request approvals, and quotation tracking.',
+    techStack: ['TASS', 'CRM', 'BRF', 'RFQ', 'Internal Suite'],
   },
 ];
 
