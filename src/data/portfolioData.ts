@@ -8,7 +8,7 @@
 
 // EDIT HERE: Replace with your own portrait photo path (e.g. '/portrait.jpg') or hosted URL.
 export const PROFILE_IMAGE =
-  '/src/assets/images/developer_portrait_1795763696759.jpg';
+  '/src/assets/images/brent_portrait.jpg';
 
 export type ProjectCategory =
   | 'All'
@@ -117,7 +117,7 @@ export interface QAMetric {
 }
 
 export interface SocialLink {
-  id: 'github' | 'linkedin' | 'twitter' | 'upwork';
+  id: 'github' | 'linkedin' | 'upwork';
   label: string;
   handle: string;
   href: string;
@@ -132,8 +132,8 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const PROFILE_CONFIG: ProfileConfig = {
   // EDIT HERE: Your full name & monogram
-  name: 'Alex Mercer',
-  monogram: 'AM',
+  name: 'Brent Go',
+  monogram: 'BG',
   // EDIT HERE: Your headline title & location
   role: 'Full-Stack Engineer · QA Automation · AI Systems',
   location: 'San Francisco & Remote Worldwide',
@@ -144,11 +144,11 @@ export const PROFILE_CONFIG: ProfileConfig = {
   subheadline:
     'I build resilient web platforms across SQL and NoSQL architectures, back every release with automated QA pipelines, and deploy practical AI workflows that eliminate manual operations.',
   // EDIT HERE: Your contact email & resume path
-  email: 'alex.mercer.dev@example.com',
+  email: 'brentliamemmanuelgo@gmail.com',
   resumeUrl: '/resume.pdf',
-  resumeFileName: 'Alex-Mercer-Resume.pdf',
+  resumeFileName: 'Brent-Liam-Go-Resume.pdf',
   portraitAlt:
-    'Portrait of Alex Mercer, Full-Stack Developer specializing in QA Automation and AI Workflows',
+    'Portrait of Brent Go, Full-Stack Developer specializing in QA Automation and AI Workflows',
   // EDIT HERE: Subtle badge caption over portrait frame
   portraitBadgeLabel: 'Production-Tested Code',
   portraitBadgeDetail: 'SQL + NoSQL · Automated QA · AI Workflows',
@@ -518,26 +518,20 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     id: 'github',
     label: 'GitHub',
-    handle: 'github.com/alexmercer-dev',
-    href: 'https://github.com/example',
+    handle: 'github.com/faiyazbrnt',
+    href: 'https://github.com/faiyazbrnt',
   },
   {
     id: 'linkedin',
     label: 'LinkedIn',
-    handle: 'linkedin.com/in/alexmercer-dev',
-    href: 'https://linkedin.com/in/example',
-  },
-  {
-    id: 'twitter',
-    label: 'X / Twitter',
-    handle: '@alexmercer_dev',
-    href: 'https://x.com/example',
+    handle: 'linkedin.com/in/brent-liam-emmanuel-go',
+    href: 'https://www.linkedin.com/in/brent-liam-emmanuel-go/',
   },
   {
     id: 'upwork',
     label: 'Upwork & Consulting',
     handle: 'Top-Rated Full-Stack & QA',
-    href: 'https://www.upwork.com',
+    href: 'https://www.upwork.com/freelancers/~019fffe659432e85fb',
   },
 ];
 

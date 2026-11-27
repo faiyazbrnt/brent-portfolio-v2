@@ -1,7 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import {
-  ArrowUpRight,
   Briefcase,
   Check,
   Copy,
@@ -32,9 +31,6 @@ function SocialIcon({ id }: { id: SocialLink['id'] }) {
       return <Linkedin className="w-4 h-4" aria-hidden="true" />;
     case 'upwork':
       return <Briefcase className="w-4 h-4" aria-hidden="true" />;
-    case 'twitter':
-    default:
-      return <ArrowUpRight className="w-4 h-4" aria-hidden="true" />;
   }
 }
 
